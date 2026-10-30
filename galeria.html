@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galería | RDR2guia</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #171513;
+    color: #e8decd;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* MENU */
+
+header {
+    min-height: 70px;
+    padding: 10px 5%;
+    background: #0b0b0b;
+    border-bottom: 2px solid #a71916;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, sans-serif;
+    font-size: 24px;
+    line-height: 19px;
+    min-width: 90px;
+}
+
+.logo span:first-child {
+    color: #f0e5d4;
+}
+
+.logo span:last-child {
+    color: #b41419;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    padding: 12px 10px;
+    color: #e0d0b5;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+nav a:hover,
+nav a.activo {
+    background: #a71916;
+    color: white;
+    clip-path: polygon(
+        8% 0, 92% 0, 100% 20%, 95% 80%,
+        92% 100%, 8% 100%, 0 80%, 5% 20%
+    );
+}
+
+.buscar {
+    font-size: 19px;
+    color: #e0cfb1;
+}
+
+/* BANNER */
+
+.banner {
+    min-height: 230px;
+    padding: 35px 5%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.15)),
+        linear-gradient(180deg, #79502f, #34251a 65%, #171513);
+    border-bottom: 3px solid #9f1715;
+}
+
+.banner-contenido {
+    max-width: 650px;
+}
+
+.banner h1 {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: clamp(45px, 7vw, 76px);
+    letter-spacing: 2px;
+    text-shadow: 3px 3px #000;
+}
+
+.raya-roja {
+    width: 105px;
+    height: 6px;
+    background: #b5121b;
+    margin: 12px 0;
+    transform: skew(-20deg);
+}
+
+.banner p {
+    font-size: 19px;
+    line-height: 1.6;
+    font-style: italic;
+    text-shadow: 2px 2px #000;
+}
+
+/* INTRODUCCION */
+
+.introduccion {
+    max-width: 1250px;
+    width: 90%;
+    margin: 30px auto 25px;
+    text-align: center;
+}
+
+.introduccion h2 {
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.introduccion p {
+    color: #c9bba6;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.advertencia {
+    margin-top: 15px;
+    color: #d6a19a;
+    font-size: 12px;
+}
+
+/* FILTROS */
+
+.filtros {
+    width: 90%;
+    max-width: 1250px;
+    margin: 25px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filtros a {
+    border: 1px solid #554333;
+    padding: 10px 15px;
+    font-size: 12px;
+    color: #dfd0ba;
+    background: #211d18;
+    transition: .2s;
+}
+
+.filtros a:hover {
+    background: #a71916;
+    border-color: #a71916;
+}
+
+/* GALERIA */
+
+.galeria {
+    width: 90%;
+    max-width: 1450px;
+    margin: 0 auto 45px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.tarjeta {
+    background: #211e1a;
+    border: 1px solid #51402f;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s, border-color .25s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: #a71916;
+}
+
+.imagen {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #100f0d;
+    overflow: hidden;
+}
+
+.imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s;
+}
+
+.tarjeta:hover .imagen img {
+    transform: scale(1.04);
+}
+
+.contenido {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.numero {
+    color: #b51b1c;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.contenido h3 {
+    color: #f0e3ce;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 23px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.contenido p {
+    color: #c7b9a5;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.linea {
+    width: 55px;
+    height: 3px;
+    background: #a71916;
+    margin: 0 0 13px;
+}
+
+/* PIE */
+
+footer {
+    background: #090909;
+    border-top: 3px solid #4b3023;
+    padding: 25px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-pie {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, sans-serif;
+    font-size: 22px;
+    line-height: 18px;
+}
+
+.logo-pie span:last-child {
+    color: #b41419;
+}
+
+footer p {
+    color: #bdb09c;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.redes {
+    display: flex;
+    gap: 15px;
+    font-size: 17px;
+}
+
+.redes a:hover {
+    color: #b7191b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 9px 7px;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        position: relative;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    .banner {
+        min-height: 180px;
+    }
+
+    .banner h1 {
+        font-size: 45px;
+    }
+
+    .banner p {
+        font-size: 16px;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+
+    .introduccion {
+        width: 92%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <nav>
+        <a href="RDR2guia.html">INICIO</a>
+        <a href="historia.html">HISTORIA</a>
+        <a href="personajes.html">PERSONAJES</a>
+        <a href="mapa.html">MAPA</a>
+        <a href="misiones.html">MISIONES</a>
+        <a href="galeria.html" class="activo">GALERÍA</a>
+        <a href="contactos.html">CONTACTO</a>
+    </nav>
+
+    <a class="buscar" href="#galeria" aria-label="Ver galería">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+</header>
+
+<section class="banner">
+    <div class="banner-contenido">
+        <h1>GALERÍA</h1>
+        <div class="raya-roja"></div>
+        <p>“Algunas historias nunca se olvidan.”</p>
+    </div>
+</section>
+
+<section class="introduccion">
+    <h2>MOMENTOS INOLVIDABLES</h2>
+
+    <p>
+        Revive los acontecimientos más importantes de Red Dead Redemption 2:
+        las decisiones de Arthur Morgan, la historia de la banda de Van der Linde
+        y el camino que conduce al final de una época.
+    </p>
+
+    <p class="advertencia">
+        Atención: esta galería contiene spoilers importantes de la historia principal
+        y de los epílogos.
+    </p>
+</section>
+
+<div class="filtros">
+    <a href="#inicio-historia">INICIO DE LA HISTORIA</a>
+    <a href="#banda">LA BANDA</a>
+    <a href="#arthur">ARTHUR MORGAN</a>
+    <a href="#final">EL DESENLACE</a>
+    <a href="#john">JOHN MARSTON</a>
+</div>
+
+<main class="galeria" id="galeria">
+
+    <article class="tarjeta" id="inicio-historia">
+        <div class="imagen">
+            <img src="gal1.WEBP" alt="La banda de Van der Linde en las montañas nevadas">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 01</span>
+            <h3>La huida de Blackwater</h3>
+            <div class="linea"></div>
+            <p>
+                La historia comienza después de un robo fallido en Blackwater.
+                Arthur Morgan y sus compañeros escapan hacia las montañas,
+                donde el frío y la falta de recursos amenazan la supervivencia
+                de la banda.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta" id="banda">
+        <div class="imagen">
+            <img src="gal2.WEBP" alt="Arthur Morgan y Dutch van der Linde">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 02</span>
+            <h3>La banda de Van der Linde</h3>
+            <div class="linea"></div>
+            <p>
+                Dutch intenta mantener unida a su familia de forajidos mientras
+                busca una forma de escapar de la ley. Arthur, uno de sus hombres
+                más leales, empieza a observar las contradicciones de sus planes.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal3.WEBP" alt="El asalto al tren durante los primeros capítulos">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 03</span>
+            <h3>El asalto al tren</h3>
+            <div class="linea"></div>
+            <p>
+                La banda intenta conseguir dinero mediante un golpe ferroviario.
+                La operación demuestra que sus integrantes todavía pueden
+                trabajar juntos, aunque también aumenta la presión de sus enemigos.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal4.WEBP" alt="Arthur Morgan recorriendo Valentine">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 04</span>
+            <h3>La llegada a Valentine</h3>
+            <div class="linea"></div>
+            <p>
+                La banda establece un campamento cerca de Valentine. Arthur
+                explora la región, realiza trabajos para conseguir dinero
+                y comienza a involucrarse en los conflictos de los habitantes.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal5.WEBP" alt="John Marston y Arthur Morgan durante una aventura">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 05</span>
+            <h3>Arthur y John</h3>
+            <div class="linea"></div>
+            <p>
+                La relación entre Arthur y John refleja las dificultades de
+                pertenecer a la banda. Aunque discuten y tienen diferencias,
+                ambos comparten un pasado y una preocupación por el futuro
+                de sus familias.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal6.WEBP" alt="El incendio de la mansión de los Braithwaite">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 06</span>
+            <h3>El incendio de Braithwaite Manor</h3>
+            <div class="linea"></div>
+            <p>
+                Después de una serie de traiciones y enfrentamientos, los
+                miembros de la banda atacan la mansión de los Braithwaite.
+                El incendio representa el fin de cualquier posibilidad de
+                resolver el conflicto pacíficamente.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal7.WEBP" alt="Saint Denis durante los acontecimientos de la historia">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 07</span>
+            <h3>El golpe de Saint Denis</h3>
+            <div class="linea"></div>
+            <p>
+                La banda intenta conseguir una gran suma de dinero en la ciudad.
+                Sin embargo, la operación termina en desastre y sus integrantes
+                se ven obligados a escapar, cambiando el rumbo de la historia.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal8.WEBP" alt="Arthur Morgan en la isla de Guarma">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 08</span>
+            <h3>El naufragio y Guarma</h3>
+            <div class="linea"></div>
+            <p>
+                Después del fracaso en Saint Denis, Arthur y algunos miembros
+                de la banda terminan en Guarma. Allí deben sobrevivir a un
+                conflicto local y encontrar la manera de regresar a casa.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta" id="arthur">
+        <div class="imagen">
+            <img src="gal9.WEBP" alt="Arthur Morgan reflexionando sobre su vida">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 09</span>
+            <h3>El diagnóstico de Arthur</h3>
+            <div class="linea"></div>
+            <p>
+                Arthur descubre que padece tuberculosis. La noticia transforma
+                su manera de ver el mundo y lo lleva a reflexionar sobre sus
+                actos, su pasado y las personas a las que todavía puede ayudar.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal10.WEBP" alt="Arthur Morgan ayudando a las personas que encuentra">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 10</span>
+            <h3>La redención de Arthur</h3>
+            <div class="linea"></div>
+            <p>
+                Al comprender que su tiempo es limitado, Arthur comienza a
+                cuestionar la vida que ha llevado. Sus decisiones finales
+                pueden centrarse en ayudar a los demás y darles una oportunidad
+                de construir un futuro distinto.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal11.WEBP" alt="Arthur Morgan y la banda durante la ruptura con Dutch">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 11</span>
+            <h3>La caída de Dutch</h3>
+            <div class="linea"></div>
+            <p>
+                La desconfianza, las pérdidas y la influencia de Micah Bell
+                profundizan la ruptura dentro de la banda. Arthur debe decidir
+                si continúa siguiendo a Dutch o si defiende a quienes aún
+                pueden escapar de aquella vida.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta" id="final">
+        <div class="imagen">
+            <img src="gal12.WEBP" alt="Arthur Morgan en su última cabalgata">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 12</span>
+            <h3>La última cabalgata</h3>
+            <div class="linea"></div>
+            <p>
+                Durante uno de los momentos más emotivos del juego, Arthur
+                cabalga mientras recuerda a las personas que lo acompañaron.
+                La escena representa su reflexión final sobre la vida que
+                llevó y el destino que le espera.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal13.WEBP" alt="Arthur Morgan enfrentándose a Micah Bell">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 13</span>
+            <h3>El último enfrentamiento</h3>
+            <div class="linea"></div>
+            <p>
+                El conflicto entre Arthur, Micah y Dutch llega a su punto
+                decisivo. El desenlace de Arthur depende de las decisiones
+                del jugador, incluido su nivel de honor y la elección
+                realizada durante la confrontación final.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta" id="john">
+        <div class="imagen">
+            <img src="gal14.WEBP" alt="John Marston construyendo su nuevo hogar">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 14</span>
+            <h3>La construcción de Beecher's Hope</h3>
+            <div class="linea"></div>
+            <p>
+                En el epílogo, John intenta dejar atrás su vida de forajido.
+                Con ayuda de sus amigos, construye una casa para Abigail y Jack,
+                buscando ofrecerles la estabilidad que nunca tuvo la banda.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal15.WEBP" alt="John Marston y Abigail en Beecher's Hope">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 15</span>
+            <h3>La nueva vida de John</h3>
+            <div class="linea"></div>
+            <p>
+                John y Abigail intentan formar una familia lejos de los
+                antiguos conflictos. Su hogar simboliza la oportunidad de
+                comenzar de nuevo, aunque el pasado todavía no ha desaparecido
+                por completo.
+            </p>
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <div class="imagen">
+            <img src="gal16.WEBP" alt="John Marston y sus aliados buscando a Micah">
+        </div>
+        <div class="contenido">
+            <span class="numero">Momento 16</span>
+            <h3>American Venom</h3>
+            <div class="linea"></div>
+            <p>
+                John, Sadie y Charles se dirigen a las montañas para localizar
+                a Micah. La misión cierra el conflicto pendiente con el antiguo
+                traidor y conecta los acontecimientos de RDR2 con el futuro
+                de John Marston.
+            </p>
+        </div>
+    </article>
+
+</main>
+
+<footer>
+    <a class="logo-pie" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <p>VIVE EL OESTE, COMO NUNCA ANTES</p>
+
+    <div class="redes">
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+</footer>
+
+</body>
+</html>

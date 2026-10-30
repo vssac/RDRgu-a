@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDR2guia</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #171513;
+    color: #eee2cc;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+header {
+    height: 70px;
+    background: #0d0d0d;
+    border-bottom: 2px solid #a71916;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, sans-serif;
+    font-size: 23px;
+    line-height: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    min-width: 90px;
+}
+
+.logo span:first-child {
+    color: #eee2cc;
+}
+
+.logo span:last-child {
+    color: #a71916;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: #d7c29c;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 15px;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+nav a:hover,
+nav a.activo {
+    background: #a71916;
+    color: white;
+    clip-path: polygon(
+        8% 0, 92% 0, 100% 20%, 95% 80%,
+        92% 100%, 8% 100%, 0 80%, 5% 20%
+    );
+}
+
+.buscar {
+    color: #d7c29c;
+    font-size: 20px;
+    text-decoration: none;
+    min-width: 25px;
+    text-align: right;
+}
+
+.buscar:hover {
+    color: #a71916;
+}
+
+.portada {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    padding: 0 7%;
+    border-bottom: 2px solid #a71916;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.25)),
+        url("rdr1.WEBP") center 35% / cover no-repeat;
+}
+
+.portada h1 {
+    font-size: 48px;
+    text-shadow: 2px 3px 4px #000;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 25px;
+}
+
+.titulo {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.linea {
+    width: 55px;
+    height: 4px;
+    background: #a71916;
+    margin-bottom: 25px;
+}
+
+.presentacion {
+    background: #211f1c;
+    border: 1px solid #453c32;
+    padding: 25px;
+    margin-bottom: 35px;
+    line-height: 1.8;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tarjeta {
+    background: #211f1c;
+    border: 1px solid #453c32;
+    overflow: hidden;
+    color: #eee2cc;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.tarjeta:hover {
+    border-color: #a71916;
+    transform: translateY(-4px);
+}
+
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tarjeta div {
+    padding: 20px;
+}
+
+.tarjeta h3 {
+    color: #d7c29c;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.informacion {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    background: #211f1c;
+    border: 1px solid #453c32;
+}
+
+.info img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.info h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.info p {
+    color: #c7bba7;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+footer {
+    background: #0d0d0d;
+    border-top: 2px solid #a71916;
+    text-align: center;
+    padding: 25px;
+    color: #b9a88d;
+}
+
+@media (max-width: 1000px) {
+    header {
+        height: auto;
+        min-height: 70px;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px 4%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 3px;
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .tarjetas,
+    .informacion {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .tarjetas,
+    .informacion {
+        grid-template-columns: 1fr;
+    }
+
+    .portada h1 {
+        font-size: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <nav>
+        <a href="RDR2guia.html" class="activo">INICIO</a>
+        <a href="historia.html">HISTORIA</a>
+        <a href="personajes.html">PERSONAJES</a>
+        <a href="mapa.html">MAPA</a>
+        <a href="misiones.html">MISIONES</a>
+        <a href="galeria.html">GALERÍA</a>
+        <a href="contactos.html">CONTACTO</a>
+    </nav>
+
+    <a class="buscar" href="personajes.html" aria-label="Buscar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+</header>
+
+<section class="portada">
+    <h1>RED DEAD REDEMPTION 2</h1>
+</section>
+
+<main class="contenedor">
+
+    <section class="presentacion">
+        <h2 class="titulo">BIENVENIDO A RDR2 GUÍA</h2>
+        <div class="linea"></div>
+        <p>
+            Descubre el mundo de Red Dead Redemption 2, conoce la historia
+            de Arthur Morgan, explora los personajes de la banda de Van der
+            Linde y consulta información sobre las regiones, las misiones
+            y los acontecimientos del Viejo Oeste.
+        </p>
+    </section>
+
+    <h2 class="titulo">EXPLORA EL JUEGO</h2>
+    <div class="linea"></div>
+
+    <section class="tarjetas">
+
+        <a class="tarjeta" href="historia.html">
+            <img src="his1.WEBP" alt="Historia del juego">
+            <div>
+                <h3>HISTORIA</h3>
+                <p>Conoce la trama, los capítulos, los epílogos y el contexto.</p>
+            </div>
+        </a>
+
+        <a class="tarjeta" href="personajes.html">
+            <img src="per1.WEBP" alt="Personajes del juego">
+            <div>
+                <h3>PERSONAJES</h3>
+                <p>Descubre a los miembros de la banda y a sus principales enemigos.</p>
+            </div>
+        </a>
+
+        <a class="tarjeta" href="mapa.html">
+            <img src="rdr2.WEBP" alt="Mapa del juego">
+            <div>
+                <h3>MAPA</h3>
+                <p>Explora las regiones, ciudades y lugares importantes.</p>
+            </div>
+        </a>
+
+        <a class="tarjeta" href="misiones.html">
+            <img src="rdr3.WEBP" alt="Misiones del juego">
+            <div>
+                <h3>MISIONES</h3>
+                <p>Consulta las misiones principales y las aventuras secundarias.</p>
+            </div>
+        </a>
+
+        <a class="tarjeta" href="galeria.html">
+            <img src="rdr4.WEBP" alt="Galería de imágenes">
+            <div>
+                <h3>GALERÍA</h3>
+                <p>Observa imágenes de los personajes y los paisajes del juego.</p>
+            </div>
+        </a>
+
+        <a class="tarjeta" href="contactos.html">
+            <img src="rdr5.WEBP" alt="Contacto">
+            <div>
+                <h3>CONTACTO</h3>
+                <p>Consulta la información de contacto de RDR2guia.</p>
+            </div>
+        </a>
+
+    </section>
+
+    <h2 class="titulo" style="margin-top:40px;">INFORMACIÓN DEL JUEGO</h2>
+    <div class="linea"></div>
+
+    <section class="informacion">
+
+        <article class="info">
+            <img src="icon1.WEBP" alt="">
+            <div>
+                <h3>Lanzamiento</h3>
+                <p>2018</p>
+            </div>
+        </article>
+
+        <article class="info">
+            <img src="icon2.WEBP" alt="">
+            <div>
+                <h3>Armas</h3>
+                <p>Revólveres, rifles y escopetas.</p>
+            </div>
+        </article>
+
+        <article class="info">
+            <img src="icon3.WEBP" alt="">
+            <div>
+                <h3>Desarrolladora</h3>
+                <p>Rockstar Games</p>
+            </div>
+        </article>
+
+        <article class="info">
+            <img src="icon4.WEBP" alt="">
+            <div>
+                <h3>Caballos</h3>
+                <p>Compañeros durante la aventura.</p>
+            </div>
+        </article>
+
+        <article class="info">
+            <img src="icon5.WEBP" alt="">
+            <div>
+                <h3>Mapa</h3>
+                <p>Un enorme mundo abierto.</p>
+            </div>
+        </article>
+
+        <article class="info">
+            <img src="icon6.WEBP" alt="">
+            <div>
+                <h3>Actividades</h3>
+                <p>Póker, caza, duelos y misiones.</p>
+            </div>
+        </article>
+
+    </section>
+</main>
+
+<footer>
+    <p>RDR2 GUÍA | Red Dead Redemption 2</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contacto | RDR2guia</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #171513;
+    color: #e9dfcf;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* MENU SUPERIOR */
+
+header {
+    min-height: 70px;
+    padding: 10px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: #0b0b0b;
+    border-bottom: 2px solid #a71916;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    min-width: 90px;
+    font-family: Impact, sans-serif;
+    font-size: 24px;
+    line-height: 19px;
+}
+
+.logo span:first-child {
+    color: #f2e7d5;
+}
+
+.logo span:last-child {
+    color: #b41419;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    padding: 12px 10px;
+    color: #dfcfb3;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: white;
+    background: #a71916;
+    clip-path: polygon(
+        8% 0, 92% 0, 100% 20%, 95% 80%,
+        92% 100%, 8% 100%, 0 80%, 5% 20%
+    );
+}
+
+.buscar {
+    font-size: 19px;
+    color: #e0cfb1;
+}
+
+/* BANNER */
+
+.banner {
+    min-height: 230px;
+    padding: 35px 5%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.8), rgba(0,0,0,.15)),
+        linear-gradient(180deg, #765033, #33241a 65%, #171513);
+    border-bottom: 3px solid #a71916;
+}
+
+.banner h1 {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: clamp(45px, 7vw, 76px);
+    letter-spacing: 2px;
+    text-shadow: 3px 3px #000;
+}
+
+.raya-roja {
+    width: 105px;
+    height: 6px;
+    background: #b5121b;
+    margin: 12px 0;
+    transform: skew(-20deg);
+}
+
+.banner p {
+    max-width: 650px;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.6;
+    text-shadow: 2px 2px #000;
+}
+
+/* INTRODUCCION */
+
+.introduccion {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+    text-align: center;
+}
+
+.introduccion h2 {
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    margin-bottom: 14px;
+}
+
+.introduccion p {
+    color: #c9bba6;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* TARJETAS DE CONTACTO */
+
+.contactos {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto 45px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tarjeta {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 25px;
+    background: #211e1a;
+    border: 1px solid #51402f;
+    transition: .25s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: #a71916;
+    background: #27211c;
+}
+
+.icono {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    background: #0b0b0b;
+    border: 2px solid #a71916;
+    border-radius: 50%;
+    font-size: 34px;
+    color: #eee0cb;
+}
+
+.tarjeta h3 {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.tarjeta p {
+    max-width: 390px;
+    color: #c7b9a5;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.boton {
+    display: inline-block;
+    margin-top: auto;
+    padding: 11px 20px;
+    background: #971612;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    clip-path: polygon(
+        5% 0, 95% 0, 100% 50%,
+        95% 100%, 5% 100%, 0 50%
+    );
+    transition: .2s;
+}
+
+.boton:hover {
+    background: #c32127;
+}
+
+/* SITIO OFICIAL */
+
+.oficial {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto 45px;
+    padding: 35px 25px;
+    text-align: center;
+    background: #0b0b0b;
+    border: 1px solid #51402f;
+}
+
+.oficial h2 {
+    font-family: Impact, sans-serif;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.oficial p {
+    max-width: 700px;
+    margin: 0 auto 22px;
+    color: #c7b9a5;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.oficial .boton {
+    margin: 5px;
+}
+
+/* SOPORTE */
+
+.soporte {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto 45px;
+    padding: 25px;
+    text-align: center;
+    border-top: 1px solid #594632;
+    border-bottom: 1px solid #594632;
+}
+
+.soporte h2 {
+    font-family: Impact, sans-serif;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.soporte p {
+    color: #c7b9a5;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* PIE DE PAGINA */
+
+footer {
+    background: #090909;
+    border-top: 3px solid #4b3023;
+    padding: 25px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo-pie {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, sans-serif;
+    font-size: 22px;
+    line-height: 18px;
+}
+
+.logo-pie span:last-child {
+    color: #b41419;
+}
+
+footer p {
+    color: #bdb09c;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.redes {
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.redes a:hover {
+    color: #b7191b;
+}
+
+/* ADAPTACION */
+
+@media (max-width: 1000px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 9px 7px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    header {
+        position: relative;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    .banner {
+        min-height: 180px;
+    }
+
+    .banner h1 {
+        font-size: 45px;
+    }
+
+    .banner p {
+        font-size: 16px;
+    }
+
+    .contactos {
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+
+    .introduccion,
+    .oficial,
+    .soporte {
+        width: 92%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <nav>
+        <a href="RDR2guia.html">INICIO</a>
+        <a href="historia.html">HISTORIA</a>
+        <a href="personajes.html">PERSONAJES</a>
+        <a href="mapa.html">MAPA</a>
+        <a href="misiones.html">MISIONES</a>
+        <a href="galeria.html">GALERÍA</a>
+        <a href="contactos.html" class="activo">CONTACTO</a>
+    </nav>
+
+    <a class="buscar" href="#contactos" aria-label="Ver contactos">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+</header>
+
+<section class="banner">
+    <div>
+        <h1>CONTACTO</h1>
+        <div class="raya-roja"></div>
+        <p>“Mantente conectado con el mundo del Salvaje Oeste.”</p>
+    </div>
+</section>
+
+<section class="introduccion">
+    <h2>ENCUÉNTRANOS EN REDES SOCIALES</h2>
+
+    <p>
+        Sigue las novedades, los videos, las publicaciones y las noticias
+        relacionadas con Red Dead Redemption 2 y Rockstar Games.
+        Visita sus canales oficiales para descubrir más sobre el juego.
+    </p>
+</section>
+
+<main class="contactos" id="contactos">
+
+    <article class="tarjeta">
+        <div class="icono">
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+
+        <h3>YOUTUBE</h3>
+
+        <p>
+            Encuentra tráileres, videos oficiales, avances y contenido
+            publicado por Rockstar Games.
+        </p>
+
+        <a class="boton"
+           href="https://www.youtube.com/@RockstarGames"
+           target="_blank"
+           rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            VISITAR YOUTUBE
+        </a>
+    </article>
+
+    <article class="tarjeta">
+        <div class="icono">
+            <i class="fa-brands fa-x-twitter"></i>
+        </div>
+
+        <h3>X / TWITTER</h3>
+
+        <p>
+            Consulta publicaciones, anuncios y novedades compartidas
+            por la cuenta de Rockstar Games.
+        </p>
+
+        <a class="boton"
+           href="https://x.com/RockstarGames"
+           target="_blank"
+           rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            VISITAR X
+        </a>
+    </article>
+
+    <article class="tarjeta">
+        <div class="icono">
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+
+        <h3>INSTAGRAM</h3>
+
+        <p>
+            Explora publicaciones, imágenes, videos y contenido visual
+            de Rockstar Games y sus videojuegos.
+        </p>
+
+        <a class="boton"
+           href="https://www.instagram.com/rockstargames/"
+           target="_blank"
+           rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            VISITAR INSTAGRAM
+        </a>
+    </article>
+
+    <article class="tarjeta">
+        <div class="icono">
+            <i class="fa-brands fa-facebook-f"></i>
+        </div>
+
+        <h3>FACEBOOK</h3>
+
+        <p>
+            Visita la página de Rockstar Games para consultar
+            publicaciones y novedades de sus juegos.
+        </p>
+
+        <a class="boton"
+           href="https://www.facebook.com/rockstargames/"
+           target="_blank"
+           rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            VISITAR FACEBOOK
+        </a>
+    </article>
+
+</main>
+
+<section class="oficial">
+    <h2>PÁGINA OFICIAL DE RED DEAD REDEMPTION 2</h2>
+
+    <p>
+        Visita el sitio oficial para conocer el juego, explorar sus
+        características, consultar contenido multimedia y descubrir
+        información sobre Red Dead Online.
+    </p>
+
+    <a class="boton"
+       href="https://www.rockstargames.com/mx/reddeadredemption2"
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fa-solid fa-globe"></i>
+        SITIO OFICIAL
+    </a>
+
+    <a class="boton"
+       href="https://store.rockstargames.com/es-419/game/buy-red-dead-redemption-2"
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fa-solid fa-store"></i>
+        ROCKSTAR STORE
+    </a>
+</section>
+
+<section class="soporte">
+    <h2>¿NECESITAS AYUDA CON EL JUEGO?</h2>
+
+    <p>
+        Si tienes problemas técnicos o necesitas consultar información
+        sobre el juego, puedes visitar el centro de soporte de Rockstar Games.
+    </p>
+
+    <a class="boton"
+       href="https://support.rockstargames.com/reddeadredemption2"
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fa-solid fa-circle-question"></i>
+        SOPORTE OFICIAL
+    </a>
+</section>
+
+<footer>
+    <a class="logo-pie" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <p>VIVE EL OESTE, COMO NUNCA ANTES</p>
+
+    <div class="redes">
+        <a href="https://www.youtube.com/@RockstarGames"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="https://x.com/RockstarGames"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="X">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="https://www.instagram.com/rockstargames/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://www.facebook.com/rockstargames/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

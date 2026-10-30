@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa | RDR2guia</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #171513;
+    color: #eee2cc;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    min-height: 70px;
+    background: #0d0d0d;
+    border-bottom: 2px solid #a71916;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, sans-serif;
+    font-size: 23px;
+    line-height: 19px;
+    font-weight: bold;
+    min-width: 90px;
+}
+
+.logo span:first-child {
+    color: #eee2cc;
+}
+
+.logo span:last-child {
+    color: #a71916;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: #d7c29c;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 15px;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+nav a:hover,
+nav a.activo {
+    background: #a71916;
+    color: white;
+    clip-path: polygon(
+        8% 0, 92% 0, 100% 20%, 95% 80%,
+        92% 100%, 8% 100%, 0 80%, 5% 20%
+    );
+}
+
+.buscar {
+    color: #d7c29c;
+    font-size: 20px;
+    min-width: 25px;
+    text-align: right;
+}
+
+.buscar:hover {
+    color: #a71916;
+}
+
+/* BANNER */
+
+.portada {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    padding: 25px 6%;
+    border-bottom: 2px solid #a71916;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.2)),
+        url("rdr1.WEBP") center 45% / cover no-repeat;
+}
+
+.frase {
+    font-size: 25px;
+    font-style: italic;
+    line-height: 1.35;
+    max-width: 320px;
+    text-shadow: 2px 2px 5px #000;
+    transform: rotate(-3deg);
+}
+
+.frase span {
+    display: block;
+    font-size: 12px;
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* CONTENIDO */
+
+.contenedor {
+    max-width: 1450px;
+    margin: auto;
+    padding: 20px 3%;
+}
+
+.introduccion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 18px;
+}
+
+h1, h2, h3 {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+.subrayado {
+    width: 65px;
+    height: 4px;
+    background: #a71916;
+    margin: 7px 0 12px;
+}
+
+.introduccion p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.frase-secundaria {
+    font-size: 19px;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.frase-secundaria span {
+    display: block;
+    font-size: 11px;
+    text-align: right;
+}
+
+/* MAPA Y PANEL LATERAL */
+
+.contenido-mapa {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(280px, .9fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.columna-mapas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.mapa-principal {
+    background: #211d18;
+    border: 2px solid #493a2b;
+    padding: 8px;
+}
+
+.mapa-principal img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* SEGUNDA IMAGEN */
+
+.mapa-secundario {
+    background: #211d18;
+    border: 2px solid #493a2b;
+    padding: 8px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.mapa-secundario img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* PANEL DERECHO */
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.bloque {
+    background: #0d0c0b;
+    border: 1px solid #45382b;
+    padding: 14px;
+}
+
+.titulo-bloque {
+    font-size: 23px;
+    border-bottom: 1px solid #514335;
+    padding-bottom: 9px;
+    margin-bottom: 10px;
+}
+
+.titulo-bloque::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: #a71916;
+    margin-top: 6px;
+}
+
+/* REGIONES */
+
+.region {
+    border-bottom: 1px solid #352d25;
+}
+
+.region:last-child {
+    border-bottom: none;
+}
+
+.region summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.region summary::-webkit-details-marker {
+    display: none;
+}
+
+.region summary::after {
+    content: "\f054";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 12px;
+    color: #d7c29c;
+    transition: transform .2s;
+}
+
+.region[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.region summary:hover {
+    color: #d9a56a;
+}
+
+.region p {
+    color: #c9bdab;
+    font-size: 12px;
+    line-height: 1.6;
+    padding: 0 5px 12px;
+}
+
+.region ul {
+    padding: 0 5px 12px 22px;
+    color: #c9bdab;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* LEYENDA */
+
+.leyenda {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px 8px;
+}
+
+.item-leyenda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #d9cdbb;
+    min-width: 0;
+}
+
+.item-leyenda i {
+    width: 19px;
+    text-align: center;
+    color: #eee2cc;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.item-leyenda:hover {
+    color: #d9a56a;
+}
+
+/* LUGARES DESTACADOS */
+
+.destacados {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.lugar {
+    min-width: 0;
+}
+
+.lugar-imagen {
+    height: 75px;
+    background: linear-gradient(145deg, #65503a, #28231c 55%, #0c0b0a);
+    border: 1px solid #554431;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #d7c29c;
+}
+
+.lugar h3 {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* EXPLORACIÓN */
+
+.exploracion {
+    margin-top: 22px;
+    background: #211f1c;
+    border: 1px solid #453c32;
+    padding: 22px;
+}
+
+.exploracion h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.exploracion p {
+    color: #d2c6b5;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.categorias {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.categoria {
+    background: #0d0c0b;
+    border: 1px solid #45382b;
+    padding: 15px;
+    text-align: center;
+    transition: .2s;
+}
+
+.categoria:hover {
+    border-color: #a71916;
+    transform: translateY(-3px);
+}
+
+.categoria i {
+    font-size: 23px;
+    margin-bottom: 10px;
+    color: #d7c29c;
+}
+
+.categoria h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.categoria p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    margin-top: 25px;
+    background: #0d0d0d;
+    border-top: 2px solid #a71916;
+    padding: 25px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo-pie {
+    font-family: Impact, sans-serif;
+    font-size: 20px;
+    line-height: 18px;
+}
+
+.logo-pie span {
+    display: block;
+}
+
+.logo-pie span:last-child {
+    color: #a71916;
+}
+
+footer p {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.redes {
+    display: flex;
+    gap: 15px;
+    font-size: 17px;
+}
+
+.redes a:hover {
+    color: #a71916;
+}
+
+/* DISEÑO RESPONSIVO */
+
+@media (max-width: 1100px) {
+    header {
+        padding: 12px 3%;
+    }
+
+    nav {
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 10px 8px;
+    }
+
+    .contenido-mapa {
+        grid-template-columns: minmax(0, 1.6fr) minmax(250px, 1fr);
+    }
+
+    .categorias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        order: 3;
+        width: 100%;
+    }
+
+    .contenido-mapa {
+        grid-template-columns: 1fr;
+    }
+
+    .introduccion {
+        grid-template-columns: 1fr;
+    }
+
+    .frase-secundaria {
+        text-align: left;
+    }
+
+    .portada {
+        min-height: 125px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor {
+        padding: 14px 10px;
+    }
+
+    .categorias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .leyenda {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    .frase {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <nav>
+        <a href="RDR2guia.html">INICIO</a>
+        <a href="historia.html">HISTORIA</a>
+        <a href="personajes.html">PERSONAJES</a>
+        <a href="mapa.html" class="activo">MAPA</a>
+        <a href="misiones.html">MISIONES</a>
+        <a href="galeria.html">GALERÍA</a>
+        <a href="contactos.html">CONTACTO</a>
+    </nav>
+
+    <a class="buscar" href="#explorar" aria-label="Explorar mapa">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+</header>
+
+<section class="portada">
+    <div class="frase">
+        “Un mundo lleno de historias por descubrir”
+        <span>— Red Dead Redemption 2</span>
+    </div>
+</section>
+
+<main class="contenedor">
+
+    <section class="introduccion">
+        <div>
+            <h1>MAPA</h1>
+            <div class="subrayado"></div>
+            <p>
+                El mundo de Red Dead Redemption 2 es un vasto y detallado
+                territorio que puedes explorar libremente. Desde montañas
+                nevadas hasta pantanos, cada región está llena de secretos,
+                pueblos, animales y oportunidades.
+            </p>
+        </div>
+
+        <div class="frase-secundaria">
+            “No hay caminos, solo horizontes.”
+            <span>— Arthur Morgan</span>
+        </div>
+    </section>
+
+    <section class="contenido-mapa">
+
+        <!-- COLUMNA IZQUIERDA: MAPAS -->
+
+        <div class="columna-mapas">
+
+            <div class="mapa-principal">
+                <img src="mapa.WEBP" alt="Mapa principal de Red Dead Redemption 2">
+            </div>
+
+            <div class="mapa-secundario">
+                <img src="mapa2.WEBP" alt="Mapa complementario de Red Dead Redemption 2">
+            </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+
+        <aside class="panel">
+
+            <section class="bloque">
+                <h2 class="titulo-bloque">REGIONES</h2>
+
+                <details class="region">
+                    <summary>Ambarino</summary>
+                    <p>Región montañosa y fría, con nieve, bosques y fauna salvaje.</p>
+                    <ul>
+                        <li>Colter</li>
+                        <li>Lake Isabella</li>
+                        <li>Grizzlies</li>
+                        <li>Cotorra Springs</li>
+                    </ul>
+                </details>
+
+                <details class="region">
+                    <summary>New Hanover</summary>
+                    <p>Extensas praderas, pueblos, ranchos, ríos y terrenos rocosos.</p>
+                    <ul>
+                        <li>Valentine</li>
+                        <li>Annesburg</li>
+                        <li>Van Horn</li>
+                        <li>Emerald Ranch</li>
+                        <li>Heartlands</li>
+                    </ul>
+                </details>
+
+                <details class="region">
+                    <summary>Lemoyne</summary>
+                    <p>Región cálida con plantaciones, pantanos y Saint Denis.</p>
+                    <ul>
+                        <li>Saint Denis</li>
+                        <li>Rhodes</li>
+                        <li>Lagras</li>
+                        <li>Bayou Nwa</li>
+                        <li>Scarlett Meadows</li>
+                    </ul>
+                </details>
+
+                <details class="region">
+                    <summary>West Elizabeth</summary>
+                    <p>Bosques, montañas, llanuras y asentamientos importantes.</p>
+                    <ul>
+                        <li>Blackwater</li>
+                        <li>Strawberry</li>
+                        <li>Big Valley</li>
+                        <li>Tall Trees</li>
+                        <li>Great Plains</li>
+                    </ul>
+                </details>
+
+                <details class="region">
+                    <summary>New Austin</summary>
+                    <p>Región árida con desiertos, cañones y pueblos fronterizos.</p>
+                    <ul>
+                        <li>Armadillo</li>
+                        <li>Tumbleweed</li>
+                        <li>Rio Bravo</li>
+                        <li>Gaptooth Ridge</li>
+                    </ul>
+                </details>
+            </section>
+
+            <section class="bloque" id="leyenda">
+                <h2 class="titulo-bloque">LEYENDA</h2>
+
+                <div class="leyenda">
+
+                    <div class="item-leyenda"><i class="fa-solid fa-city"></i><span>Ciudad</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-house"></i><span>Pueblo y asentamiento</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-campground"></i><span>Campamento</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-location-dot"></i><span>Punto de interés</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-store"></i><span>Tienda y comercio</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-hat-cowboy"></i><span>Perista</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-horse"></i><span>Establo y caballos</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-cross"></i><span>Médico</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-gun"></i><span>Armero</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-beer-mug-empty"></i><span>Salón</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-hotel"></i><span>Hotel y alojamiento</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-train"></i><span>Estación de tren</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-road"></i><span>Camino y carretera</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-water"></i><span>Río y lago</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-mountain-sun"></i><span>Montaña</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-tree"></i><span>Bosque</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-paw"></i><span>Animales y fauna</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-fish"></i><span>Pesca</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-skull"></i><span>Peligro y enemigos</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-crosshairs"></i><span>Caza y rastreo</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-scroll"></i><span>Misión</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-star"></i><span>Misión secundaria</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-circle-question"></i><span>Encuentro aleatorio</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-eye"></i><span>Secreto y misterio</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-skull-crossbones"></i><span>Bandas enemigas</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-box"></i><span>Objeto coleccionable</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-camera"></i><span>Fotografía y registro</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-ferry"></i><span>Transporte acuático</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-bridge"></i><span>Puente</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-church"></i><span>Iglesia</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-fire"></i><span>Hoguera</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-dice"></i><span>Juego y apuestas</span></div>
+                    <div class="item-leyenda"><i class="fa-solid fa-circle-exclamation"></i><span>Evento importante</span></div>
+
+                </div>
+
+                <p style="font-size:11px; color:#a99a84; margin-top:12px; line-height:1.5;">
+                    Iconos representativos de lugares, actividades y servicios.
+                    No todos corresponden a símbolos oficiales del mapa base.
+                </p>
+            </section>
+
+            <section class="bloque">
+                <h2 class="titulo-bloque">LUGARES DESTACADOS</h2>
+
+                <div class="destacados">
+
+                    <a class="lugar" href="#explorar">
+                        <div class="lugar-imagen"><i class="fa-solid fa-mountain"></i></div>
+                        <h3>Montañas de Ambarino</h3>
+                    </a>
+
+                    <a class="lugar" href="#explorar">
+                        <div class="lugar-imagen"><i class="fa-solid fa-house"></i></div>
+                        <h3>Valentine</h3>
+                    </a>
+
+                    <a class="lugar" href="#explorar">
+                        <div class="lugar-imagen"><i class="fa-solid fa-tree"></i></div>
+                        <h3>Pantanos de Lemoyne</h3>
+                    </a>
+
+                </div>
+            </section>
+
+        </aside>
+
+    </section>
+
+    <section class="exploracion" id="explorar">
+        <h2>EXPLORA EL VIEJO OESTE</h2>
+        <div class="subrayado"></div>
+
+        <p>
+            Recorre cada región para descubrir asentamientos, animales,
+            misiones, tesoros y acontecimientos inesperados. El mundo cambia
+            según tus acciones y ofrece numerosos lugares para visitar.
+        </p>
+
+        <div class="categorias">
+
+            <a href="#leyenda" class="categoria">
+                <i class="fa-solid fa-paw"></i>
+                <h3>FAUNA</h3>
+                <p>Animales, caza, pesca y rastros.</p>
+            </a>
+
+            <a href="#leyenda" class="categoria">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>LUGARES</h3>
+                <p>Pueblos, ciudades y sitios ocultos.</p>
+            </a>
+
+            <a href="#leyenda" class="categoria">
+                <i class="fa-solid fa-scroll"></i>
+                <h3>AVENTURAS</h3>
+                <p>Misiones y encuentros especiales.</p>
+            </a>
+
+            <a href="#leyenda" class="categoria">
+                <i class="fa-solid fa-compass"></i>
+                <h3>EXPLORACIÓN</h3>
+                <p>Rutas, caminos y secretos.</p>
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <a class="logo-pie" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <p>VIVE EL OESTE, COMO NUNCA ANTES</p>
+
+    <div class="redes">
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+</footer>
+
+</body>
+</html>

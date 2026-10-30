@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historia | RDR2guia</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #171513;
+            color: #d0cbc5;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 70px;
+            background: #0d0d0d;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #a71916;
+        }
+
+        .logo {
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: 25px;
+            line-height: 20px;
+            color: #f0e6d2;
+            width: 150px;
+        }
+
+        .logo span {
+            color: #a71916;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #d7c29c;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+            background: #a71916;
+        }
+
+        nav a.activo {
+            background: #a71916;
+            color: white;
+            clip-path: polygon(
+                8% 0,
+                92% 0,
+                100% 20%,
+                95% 80%,
+                92% 100%,
+                8% 100%,
+                0 80%,
+                5% 20%
+            );
+        }
+
+        .search {
+            color: #d7c29c;
+            font-size: 18px;
+            width: 50px;
+            text-align: right;
+        }
+
+        /* ================= PORTADA ================= */
+
+        .portada-historia {
+            height: 300px;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.35),
+                    rgba(0,0,0,0.75)
+                ),
+                url("his1.WEBP");
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px 7%;
+            border-bottom: 4px solid #a71916;
+        }
+
+        .portada-historia h1 {
+            color: #f0e6d2;
+            font-size: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 5px black;
+        }
+
+        /* ================= CONTENIDO ================= */
+
+        .contenido {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .historia-box {
+            background: #211f1c;
+            border: 1px solid #453d35;
+            margin-bottom: 35px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+
+            display: grid;
+            grid-template-columns: 1fr 330px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .historia-texto h2 {
+            color: #f0e6d2;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .subrayado {
+            width: 55px;
+            height: 4px;
+            background: #a71916;
+            margin-bottom: 18px;
+        }
+
+        .historia-texto p {
+            font-size: 16px;
+            line-height: 1.7;
+            text-align: justify;
+            color: #d0cbc5;
+        }
+
+        /* ================= IMAGEN ================= */
+
+        .historia-imagen {
+            background: #111;
+            padding: 8px;
+            border: 1px solid #51483e;
+        }
+
+        .historia-imagen img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ================= CAPÍTULOS ================= */
+
+        .numero-capitulo {
+            display: inline-block;
+            background: #a71916;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* ================= EPÍLOGOS ================= */
+
+        .epilogo {
+            border-left: 5px solid #a71916;
+        }
+
+        /* ================= CONTEXTO ================= */
+
+        .contexto {
+            background: #d7c29c;
+            color: #211f1c;
+        }
+
+        .contexto .historia-texto h2 {
+            color: #211f1c;
+        }
+
+        .contexto .subrayado {
+            background: #a71916;
+        }
+
+        .contexto .historia-texto p {
+            color: #211f1c;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0d0d0d;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            border-top: 2px solid #a71916;
+            color: #8e8880;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            header {
+                height: auto;
+                min-height: 70px;
+                flex-wrap: wrap;
+                padding: 15px 5%;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                overflow-x: auto;
+                justify-content: flex-start;
+                margin-top: 10px;
+            }
+
+            nav a {
+                white-space: nowrap;
+            }
+
+            .historia-box {
+                grid-template-columns: 1fr;
+            }
+
+            .historia-imagen {
+                order: -1;
+            }
+
+            .portada-historia h1 {
+                font-size: 38px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .contenido {
+                width: 94%;
+            }
+
+            .historia-box {
+                padding: 18px;
+            }
+
+            .historia-texto h2 {
+                font-size: 23px;
+            }
+
+            .historia-texto p {
+                font-size: 15px;
+            }
+
+            .portada-historia {
+                height: 240px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            RDR2<br>
+            <span>GUIA</span>
+        </div>
+
+        <nav>
+
+            <!-- CORREGIDO: AHORA REGRESA A RDR2guia.html -->
+            <a href="RDR2guia.html">
+                INICIO
+            </a>
+
+            <a href="historia.html" class="activo">
+                HISTORIA
+            </a>
+
+            <a href="personajes.html">
+                PERSONAJES
+            </a>
+
+            <a href="mapa.html">
+                MAPA
+            </a>
+
+            <a href="misiones.html">
+                MISIONES
+            </a>
+
+            <a href="galeria.html">
+                GALERÍA
+            </a>
+
+            <a href="contactos.html">
+                CONTACTO
+            </a>
+
+        </nav>
+
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+    </header>
+
+
+    <!-- ================= PORTADA ================= -->
+
+    <section class="portada-historia">
+
+        <h1>Historia</h1>
+
+    </section>
+
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main class="contenido">
+
+
+        <!-- TRAMA -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <h2>Trama</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    Red Dead Redemption 2 nos transporta al año 1899,
+                    durante los últimos años del Viejo Oeste. La historia
+                    sigue a Arthur Morgan, uno de los miembros más
+                    importantes de la banda de Van der Linde.
+                </p>
+
+                <p>
+                    Después de que un robo en Blackwater sale mal, la banda
+                    se ve obligada a huir de la ley. Mientras buscan un lugar
+                    seguro para sobrevivir, Arthur comienza a cuestionar las
+                    decisiones de Dutch y el futuro de la banda.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his1.WEBP" alt="Trama de Red Dead Redemption 2">
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 1 -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    CAPÍTULO 1
+                </span>
+
+                <h2>Colter</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    Después del desastre ocurrido en Blackwater, la banda de
+                    Van der Linde huye hacia las montañas. Una fuerte
+                    tormenta de nieve los obliga a refugiarse en Colter,
+                    donde intentan sobrevivir al frío mientras buscan una
+                    forma de escapar de la ley.
+                </p>
+
+                <p>
+                    Arthur ayuda a encontrar comida y rescatar a algunos
+                    miembros de la banda. Finalmente, el grupo consigue
+                    abandonar las montañas y dirigirse hacia un lugar más
+                    seguro.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his2.WEBP" alt="Capítulo 1 Colter">
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 2 -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    CAPÍTULO 2
+                </span>
+
+                <h2>Horseshoe Overlook</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    La banda se establece cerca de Valentine. Arthur comienza
+                    a explorar la región y participa en diferentes trabajos,
+                    robos y actividades para conseguir dinero.
+                </p>
+
+                <p>
+                    Dutch todavía cree que la banda puede conseguir suficiente
+                    dinero para retirarse y comenzar una nueva vida. Sin
+                    embargo, los problemas con la ley y los enemigos comienzan
+                    a acercarse cada vez más.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his3.WEBP" alt="Capítulo 2 Horseshoe Overlook">
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 3 -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    CAPÍTULO 3
+                </span>
+
+                <h2>Clemens Point</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    La banda se instala cerca de Rhodes, una región dominada
+                    por las familias Gray y Braithwaite. Arthur y los demás
+                    miembros de la banda quedan involucrados en el conflicto
+                    entre ambas familias.
+                </p>
+
+                <p>
+                    La situación se vuelve cada vez más peligrosa y las
+                    decisiones de Dutch comienzan a afectar el futuro de todos
+                    los integrantes de la banda.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his4.WEBP" alt="Capítulo 3 Clemens Point">
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 4 -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    CAPÍTULO 4
+                </span>
+
+                <h2>Saint Denis</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    La banda llega a Saint Denis, una ciudad mucho más
+                    moderna que los lugares donde habían estado anteriormente.
+                    Dutch comienza a preparar nuevos planes para conseguir
+                    dinero y escapar definitivamente.
+                </p>
+
+                <p>
+                    Sin embargo, los problemas con la ley y sus enemigos
+                    aumentan. Después de varios acontecimientos, la banda se
+                    ve obligada nuevamente a huir.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his5.WEBP" alt="Capítulo 4 Saint Denis">
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 5 -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    CAPÍTULO 5
+                </span>
+
+                <h2>Guarma</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    Después de los acontecimientos de Saint Denis, Arthur y
+                    algunos miembros de la banda terminan separados del
+                    resto y llegan a la isla de Guarma.
+                </p>
+
+                <p>
+                    En este lugar se ven involucrados en un conflicto y deben
+                    luchar para sobrevivir. Finalmente, Arthur consigue
+                    regresar junto con algunos miembros de la banda.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his6.WEBP" alt="Capítulo 5 Guarma">
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 6 -->
+
+        <section class="historia-box">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    CAPÍTULO 6
+                </span>
+
+                <h2>Beaver Hollow</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    La situación de la banda llega a un punto crítico.
+                    Arthur descubre que está gravemente enfermo mientras
+                    observa cómo Dutch comienza a desconfiar de varios de
+                    sus compañeros.
+                </p>
+
+                <p>
+                    La banda comienza a dividirse y Arthur empieza a pensar
+                    en las personas que todavía puede ayudar. Sus decisiones
+                    finales lo llevan a enfrentarse con las consecuencias de
+                    su vida como forajido.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his7.WEBP" alt="Capítulo 6 Beaver Hollow">
+            </div>
+
+        </section>
+
+
+        <!-- EPÍLOGO I -->
+
+        <section class="historia-box epilogo">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    EPÍLOGO I
+                </span>
+
+                <h2>Pronghorn Ranch</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    Después de la muerte de Arthur, la historia continúa con
+                    John Marston. John intenta comenzar una nueva vida junto
+                    a Abigail y Jack, alejándose de su pasado como forajido.
+                </p>
+
+                <p>
+                    Para conseguirlo, comienza a trabajar en Pronghorn Ranch.
+                    Sin embargo, su pasado todavía lo persigue y no resulta
+                    sencillo dejar atrás la vida que llevaba anteriormente.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his8.WEBP" alt="Epílogo 1">
+            </div>
+
+        </section>
+
+
+        <!-- EPÍLOGO II -->
+
+        <section class="historia-box epilogo">
+
+            <div class="historia-texto">
+
+                <span class="numero-capitulo">
+                    EPÍLOGO II
+                </span>
+
+                <h2>Beecher's Hope</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    John consigue establecer una nueva vida en Beecher's
+                    Hope junto a su familia. Construye su propia casa y
+                    trata de vivir de manera tranquila.
+                </p>
+
+                <p>
+                    Sin embargo, John todavía tiene asuntos pendientes de su
+                    pasado. Finalmente se enfrenta a Micah, conectando los
+                    acontecimientos de Red Dead Redemption 2 con la historia
+                    del primer Red Dead Redemption.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his9.WEBP" alt="Epílogo 2">
+            </div>
+
+        </section>
+
+
+        <!-- CONTEXTO -->
+
+        <section class="historia-box contexto">
+
+            <div class="historia-texto">
+
+                <h2>Contexto</h2>
+
+                <div class="subrayado"></div>
+
+                <p>
+                    La historia de Red Dead Redemption 2 ocurre en 1899,
+                    cuando el Viejo Oeste comienza a desaparecer. Las
+                    ciudades crecen, las autoridades tienen mayor control
+                    y la tecnología comienza a cambiar la forma de vida.
+                </p>
+
+                <p>
+                    La banda de Van der Linde representa una forma de vida
+                    que está llegando a su final. Durante la historia se
+                    desarrollan temas como la amistad, la lealtad, la
+                    traición y las consecuencias de las decisiones.
+                </p>
+
+            </div>
+
+            <div class="historia-imagen">
+                <img src="his10.WEBP" alt="Contexto de Red Dead Redemption 2">
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            RDR2GUIA © 2026 | Guía de Red Dead Redemption 2
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

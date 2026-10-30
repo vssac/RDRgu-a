@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido | RDR2guia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(13, 11, 9, 0.65),
+                                rgba(13, 11, 9, 0.88)),
+                url("portada.webp") center / cover no-repeat,
+                #171513;
+            color: #f1e7d5;
+            font-family: Georgia, "Times New Roman", serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .contenedor {
+            max-width: 850px;
+            width: 100%;
+            padding: 45px 30px;
+            background: rgba(13, 13, 13, 0.72);
+            border: 1px solid #65503a;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.55);
+        }
+
+        .subtitulo {
+            color: #c49a5a;
+            font-size: 14px;
+            letter-spacing: 5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 58px);
+            line-height: 1.15;
+            color: #e5c18a;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 5px #000;
+        }
+
+        .descripcion {
+            max-width: 680px;
+            margin: 0 auto 35px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ddd2c1;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 17px 35px;
+            background: #7b2921;
+            border: 2px solid #c49a5a;
+            color: #fff0d6;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #a33a2c;
+            color: white;
+            transform: scale(1.04);
+        }
+
+        .pie {
+            margin-top: 35px;
+            color: #8f8270;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .contenedor {
+                padding: 35px 20px;
+            }
+
+            .descripcion {
+                font-size: 16px;
+            }
+
+            .boton {
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="contenedor">
+        <p class="subtitulo">Una guía para el Viejo Oeste</p>
+
+        <h1>Bienvenid@ a RDR2guia</h1>
+
+        <p class="descripcion">
+            Bienvenid@ a mi página web dedicada a Red Dead Redemption 2.
+            Este sitio fue creado para reunir información sobre la historia,
+            los personajes, las misiones, los misterios y los momentos más
+            importantes del juego. Aquí podrás conocer mejor el mundo de
+            Arthur Morgan y la banda de Van der Linde, descubrir curiosidades
+            y explorar los diferentes apartados de esta guía.
+        </p>
+
+        <a class="boton" href="RDR2guia.html">
+            ENTRAR A LA GUÍA
+        </a>
+
+        <p class="pie">RED DEAD REDEMPTION 2 · GUÍA DEL JUEGO</p>
+    </main>
+</body>
+</html>

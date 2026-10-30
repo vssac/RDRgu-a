@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misiones | RDR2guia</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    background: #171512;
+    color: #e9dfcf;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    min-height: 70px;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: #0b0b0b;
+    border-bottom: 2px solid #a71916;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    min-width: 90px;
+    font-family: Impact, sans-serif;
+    font-size: 23px;
+    line-height: 19px;
+}
+
+.logo span:first-child {
+    color: #f2e7d5;
+}
+
+.logo span:last-child {
+    color: #b41419;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    color: #d9c9ae;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 12px 10px;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: white;
+    background: #a71916;
+    clip-path: polygon(
+        8% 0, 92% 0, 100% 20%, 95% 80%,
+        92% 100%, 8% 100%, 0 80%, 5% 20%
+    );
+}
+
+.buscar {
+    font-size: 19px;
+    color: #e4d3b7;
+}
+
+/* BANNER SUPERIOR */
+
+.banner {
+    min-height: 180px;
+    padding: 25px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background:
+        radial-gradient(ellipse at 75% 25%, #8b552d 0%, transparent 35%),
+        linear-gradient(180deg, #483322 0%, #201b17 55%, #100f0d 100%);
+    border-bottom: 3px solid #6e1712;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(160deg, transparent 40%, #171512 41%, transparent 42%),
+        linear-gradient(200deg, transparent 45%, #292019 46%, transparent 47%);
+    opacity: .65;
+    pointer-events: none;
+}
+
+.banner-contenido {
+    position: relative;
+    z-index: 1;
+}
+
+.banner h1 {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: clamp(42px, 6vw, 66px);
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px #000;
+}
+
+.raya-roja {
+    width: 90px;
+    height: 5px;
+    background: #bd111b;
+    margin: 12px 0;
+    transform: skew(-20deg);
+}
+
+.banner p {
+    max-width: 430px;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.4;
+    text-shadow: 2px 2px #000;
+}
+
+.banner-cita {
+    position: relative;
+    z-index: 1;
+    max-width: 240px;
+    text-align: right;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.5;
+    transform: rotate(-3deg);
+}
+
+.banner-cita span {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+}
+
+/* ESTRUCTURA PRINCIPAL */
+
+.contenedor {
+    width: 94%;
+    max-width: 1450px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 225px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+/* COLUMNA IZQUIERDA */
+
+.sidebar {
+    background: #0b0b0a;
+    border: 2px solid #51402d;
+    padding: 14px 12px;
+    position: sticky;
+    top: 85px;
+}
+
+.sidebar h2 {
+    font-family: Impact, sans-serif;
+    font-size: 23px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #a71916;
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+}
+
+.tipo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 8px;
+    border-bottom: 1px solid #383028;
+    font-size: 13px;
+    transition: .2s;
+}
+
+.tipo i {
+    width: 20px;
+    font-size: 17px;
+    text-align: center;
+    color: #e6d8c2;
+}
+
+.tipo .flecha {
+    margin-left: auto;
+    font-size: 11px;
+}
+
+.tipo:hover,
+.tipo.activo {
+    background: #a80d19;
+    color: white;
+}
+
+.tipo:hover i,
+.tipo.activo i {
+    color: white;
+}
+
+.sidebar-cita {
+    min-height: 190px;
+    margin-top: 22px;
+    padding: 20px 8px;
+    background:
+        radial-gradient(ellipse at center, #651014 0%, #250b0b 48%, #080808 75%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 14px;
+}
+
+.silueta {
+    font-size: 55px;
+    color: #080808;
+    text-shadow: 0 0 2px #bd171b;
+}
+
+.sidebar-cita p {
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.sidebar-cita span {
+    font-size: 11px;
+}
+
+/* ÁREA CENTRAL */
+
+main {
+    min-width: 0;
+    background: #d8c5a4;
+    color: #201912;
+    border: 3px solid #5b4830;
+    padding: 20px;
+}
+
+.titulo-seccion {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+}
+
+.descripcion {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 9px 0 18px;
+}
+
+.grupo {
+    margin-bottom: 25px;
+    scroll-margin-top: 90px;
+}
+
+.grupo-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 9px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #9d211d;
+}
+
+.grupo-titulo h2 {
+    font-family: Impact, sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.numero-capitulo {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: #a71916;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.capitulo-descripcion {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* LISTADO DE MISIONES */
+
+.mision {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: start;
+    padding: 12px 4px;
+    border-bottom: 1px solid #b4a080;
+}
+
+.mision:last-child {
+    border-bottom: none;
+}
+
+.mision-numero {
+    width: 27px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #a71916;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.mision h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.mision p {
+    font-size: 12px;
+    line-height: 1.55;
+    margin-top: 3px;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-top: 5px;
+    color: #6f1c17;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.estado {
+    align-self: center;
+    border: 1px solid #a18b6b;
+    background: #c9b38f;
+    color: #35271b;
+    padding: 5px 7px;
+    border-radius: 12px;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+/* CONTENIDO DE CATEGORÍAS */
+
+.nota {
+    background: #c5b08c;
+    border-left: 4px solid #a71916;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 12px 0;
+}
+
+.lista-simple {
+    list-style: none;
+}
+
+.lista-simple li {
+    padding: 11px 6px;
+    border-bottom: 1px solid #b4a080;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.lista-simple li::before {
+    content: "◆";
+    color: #a71916;
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.subtitulo {
+    font-family: Impact, sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 15px 0 5px;
+}
+
+.volver {
+    display: inline-block;
+    margin-top: 10px;
+    background: #871512;
+    color: white;
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
+}
+
+.volver:hover {
+    background: #b71d22;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    background: #090909;
+    border-top: 3px solid #3a2d20;
+    padding: 22px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-pie {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, sans-serif;
+    font-size: 21px;
+    line-height: 18px;
+}
+
+.logo-pie span:last-child {
+    color: #b41419;
+}
+
+footer p {
+    color: #bdb1a0;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.redes {
+    display: flex;
+    gap: 15px;
+    font-size: 17px;
+}
+
+.redes a:hover {
+    color: #a71916;
+}
+
+/* ADAPTACIÓN A PANTALLAS */
+
+@media (max-width: 1000px) {
+    header {
+        flex-wrap: wrap;
+        padding: 12px 3%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 9px 7px;
+        font-size: 12px;
+    }
+
+    .contenedor {
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    main {
+        padding: 14px;
+    }
+
+    .estado {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        position: relative;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+    }
+
+    .banner {
+        min-height: 150px;
+    }
+
+    .banner-cita {
+        display: none;
+    }
+
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+    }
+
+    .sidebar-cita {
+        min-height: 110px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .mision {
+        grid-template-columns: 30px minmax(0, 1fr);
+    }
+
+    .titulo-seccion {
+        font-size: 26px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 420px) {
+    .banner h1 {
+        font-size: 42px;
+    }
+
+    .banner p {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .mision h3 {
+        font-size: 12px;
+    }
+
+    .mision p {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <nav>
+        <a href="RDR2guia.html">INICIO</a>
+        <a href="historia.html">HISTORIA</a>
+        <a href="personajes.html">PERSONAJES</a>
+        <a href="mapa.html">MAPA</a>
+        <a href="misiones.html" class="activo">MISIONES</a>
+        <a href="galeria.html">GALERÍA</a>
+        <a href="contactos.html">CONTACTO</a>
+    </nav>
+
+    <a class="buscar" href="#tipos" aria-label="Buscar misiones">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+</header>
+
+<section class="banner">
+    <div class="banner-contenido">
+        <h1>MISIONES</h1>
+        <div class="raya-roja"></div>
+        <p>“Cada misión te acerca más a tu destino.”</p>
+    </div>
+
+    <div class="banner-cita">
+        “El camino no siempre es fácil.”
+        <span>— Arthur Morgan</span>
+    </div>
+</section>
+
+<div class="contenedor">
+
+    <aside class="sidebar" id="tipos">
+        <h2>TIPOS DE MISIONES</h2>
+
+        <a href="#principales" class="tipo activo">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Misiones principales</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <a href="#secundarias" class="tipo">
+            <i class="fa-solid fa-star"></i>
+            <span>Misiones secundarias</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <a href="#caza" class="tipo">
+            <i class="fa-solid fa-paw"></i>
+            <span>Encargos de caza</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <a href="#robos" class="tipo">
+            <i class="fa-solid fa-mask"></i>
+            <span>Robos y atracos</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <a href="#desafios" class="tipo">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Desafíos</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <a href="#coleccionables" class="tipo">
+            <i class="fa-solid fa-scroll"></i>
+            <span>Coleccionables</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <a href="#eventos" class="tipo">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Encuentros y eventos</span>
+            <i class="fa-solid fa-angle-right flecha"></i>
+        </a>
+
+        <div class="sidebar-cita">
+            <div class="silueta">
+                <i class="fa-solid fa-horse-head"></i>
+            </div>
+            <p>“No es solo un trabajo, es nuestra forma de vida.”</p>
+            <span>— Arthur Morgan</span>
+        </div>
+    </aside>
+
+    <main>
+
+        <section id="principales" class="grupo">
+            <h2 class="titulo-seccion">MISIONES PRINCIPALES</h2>
+
+            <p class="descripcion">
+                Las misiones principales cuentan la historia de Arthur Morgan
+                y la banda de Van der Linde. La aventura se divide en seis
+                capítulos y dos epílogos. Los listados siguientes reúnen
+                misiones destacadas de cada etapa; algunas misiones pueden
+                variar de orden o estar disponibles según el progreso.
+            </p>
+
+            <div class="nota">
+                <strong>Nota:</strong> las misiones de historia pueden
+                desbloquearse de forma diferente dependiendo de las decisiones
+                y del orden en que visites a los personajes.
+            </div>
+        </section>
+
+        <section class="grupo" id="capitulo1">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">1</span>
+                <h2>Capítulo 1: Colter</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                La banda busca refugio en las montañas después del desastre
+                de Blackwater y trata de sobrevivir a la tormenta.
+            </p>
+
+            <div class="mision">
+                <span class="mision-numero">1</span>
+                <div>
+                    <h3>Forajidos del Oeste</h3>
+                    <p>Arthur y la banda buscan provisiones en medio de la nieve.</p>
+                </div>
+            </div>
+
+            <div class="mision">
+                <span class="mision-numero">2</span>
+                <div>
+                    <h3>Entrando, perseguidos por un recuerdo</h3>
+                    <p>La banda encuentra refugio y se enfrenta a una amenaza inesperada.</p>
+                </div>
+            </div>
+
+            <div class="mision">
+                <span class="mision-numero">3</span>
+                <div>
+                    <h3>Viejos amigos</h3>
+                    <p>Arthur acompaña a sus compañeros para localizar a un grupo rival.</p>
+                </div>
+            </div>
+
+            <div class="mision">
+                <span class="mision-numero">4</span>
+                <div>
+                    <h3>Las consecuencias de Génesis</h3>
+                    <p>Arthur sale en busca de alimento para los miembros del campamento.</p>
+                </div>
+            </div>
+
+            <div class="mision">
+                <span class="mision-numero">5</span>
+                <div>
+                    <h3>¿Quién diablos es Leviticus Cornwall?</h3>
+                    <p>La banda participa en el asalto a un tren de gran valor.</p>
+                </div>
+            </div>
+
+            <div class="mision">
+                <span class="mision-numero">6</span>
+                <div>
+                    <h3>Hacia el Este</h3>
+                    <p>Los forajidos abandonan las montañas y buscan un nuevo campamento.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grupo" id="capitulo2">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">2</span>
+                <h2>Capítulo 2: Horseshoe Overlook</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                La banda llega a una región más habitable y comienza a
+                preparar nuevos golpes mientras intenta evitar a la ley.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>El viejo amigo</h3><p>Arthur se reúne con antiguos conocidos de la banda.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>El descanso de los bandidos</h3><p>La banda intenta establecerse y conseguir dinero.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>Polvo y otras promesas</h3><p>Arthur participa en asuntos relacionados con los planes del grupo.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>Pagando una llamada social</h3><p>Arthur acompaña a sus compañeros en un encuentro importante.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>Una visita de cortesía</h3><p>La banda busca información y oportunidades en la región.</p></div></div>
+            <div class="mision"><span class="mision-numero">6</span><div><h3>Los primeros serán los últimos</h3><p>Arthur ayuda a localizar a un miembro desaparecido de la banda.</p></div></div>
+            <div class="mision"><span class="mision-numero">7</span><div><h3>Las ovejas y las cabras</h3><p>Una operación aparentemente sencilla termina en un enfrentamiento.</p></div></div>
+            <div class="mision"><span class="mision-numero">8</span><div><h3>Un pescador de hombres</h3><p>Arthur acompaña a un compañero durante una salida de pesca.</p></div></div>
+            <div class="mision"><span class="mision-numero">9</span><div><h3>Una escena pastoral americana</h3><p>La banda intenta interceptar un transporte vigilado.</p></div></div>
+            <div class="mision"><span class="mision-numero">10</span><div><h3>El que no está libre de pecado</h3><p>Arthur ayuda a un predicador a resolver un problema.</p></div></div>
+            <div class="mision"><span class="mision-numero">11</span><div><h3>La columna vertebral de América</h3><p>Arthur participa en un robo y busca una recompensa.</p></div></div>
+            <div class="mision"><span class="mision-numero">12</span><div><h3>Unos cuantos hombres buenos</h3><p>Arthur se involucra en un conflicto que afecta a sus aliados.</p></div></div>
+        </section>
+
+        <section class="grupo" id="capitulo3">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">3</span>
+                <h2>Capítulo 3: Clemens Point</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                La banda se ve envuelta en la rivalidad entre las familias
+                Gray y Braithwaite, mientras sus propios planes se complican.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>El nuevo sur</h3><p>Arthur acompaña a Dutch y Hosea durante una salida por la región.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>Un error honesto</h3><p>Un robo pone a Arthur en una situación peligrosa.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>Preguntas de honor</h3><p>Arthur resuelve asuntos relacionados con su pasado.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>El curso del amor verdadero</h3><p>Arthur ayuda a dos jóvenes cuyas familias están enfrentadas.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>Magia sin trucos</h3><p>Arthur investiga una desaparición que afecta al campamento.</p></div></div>
+            <div class="mision"><span class="mision-numero">6</span><div><h3>Destilación americana</h3><p>La banda interviene en un negocio ilegal relacionado con el alcohol.</p></div></div>
+            <div class="mision"><span class="mision-numero">7</span><div><h3>Precios de sangre, antiguos y modernos</h3><p>La tensión entre las familias y los forajidos aumenta.</p></div></div>
+            <div class="mision"><span class="mision-numero">8</span><div><h3>El banco, el arte americano</h3><p>La banda prepara un golpe que requiere coordinación.</p></div></div>
+        </section>
+
+        <section class="grupo" id="capitulo4">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">4</span>
+                <h2>Capítulo 4: Shady Belle</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                La banda se traslada cerca de Saint Denis y se involucra
+                en negocios con personajes poderosos de la ciudad.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>Los placeres de la civilización</h3><p>Arthur y sus compañeros conocen la ciudad y sus peligros.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>Angelo Bronte, un hombre de honor</h3><p>La banda busca respuestas y se enfrenta a un poderoso criminal.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>Sin buenas acciones</h3><p>Arthur se encuentra involucrado en un problema inesperado.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>Los padres de América</h3><p>Arthur ayuda a resolver un conflicto relacionado con las autoridades.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>Un paseo por el campo</h3><p>Arthur acompaña a un compañero en una salida por los alrededores.</p></div></div>
+            <div class="mision"><span class="mision-numero">6</span><div><h3>Una jaula dorada</h3><p>La banda asiste a un evento donde busca contactos y oportunidades.</p></div></div>
+            <div class="mision"><span class="mision-numero">7</span><div><h3>Una noche de libertinaje</h3><p>Un plan en Saint Denis se convierte en una noche complicada.</p></div></div>
+            <div class="mision"><span class="mision-numero">8</span><div><h3>La venganza es un plato que se come</h3><p>Los miembros de la banda buscan ajustar cuentas con sus enemigos.</p></div></div>
+            <div class="mision"><span class="mision-numero">9</span><div><h3>Banca, el arte americano</h3><p>La banda lleva a cabo un importante atraco en Saint Denis.</p></div></div>
+        </section>
+
+        <section class="grupo" id="capitulo5">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">5</span>
+                <h2>Capítulo 5: Guarma</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                Después de un golpe fallido, Arthur y sus compañeros quedan
+                atrapados lejos de su hogar y deben encontrar la forma de volver.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>Bienvenidos al Nuevo Mundo</h3><p>Arthur despierta en un territorio desconocido tras el desastre.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>Salvajismo desatado</h3><p>Arthur se involucra en el conflicto que sacude la isla.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>Un favor breve para un viejo amigo</h3><p>La banda busca aliados para escapar de Guarma.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>El infierno no tiene furia</h3><p>Los fugitivos preparan su siguiente movimiento.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>Paradise Mercifully Departed</h3><p>Arthur lucha por encontrar una salida de la isla.</p></div></div>
+            <div class="mision"><span class="mision-numero">6</span><div><h3>Querido tío Tacitus</h3><p>La banda intenta regresar y recuperar el contacto con sus compañeros.</p></div></div>
+        </section>
+
+        <section class="grupo" id="capitulo6">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">6</span>
+                <h2>Capítulo 6: Beaver Hollow</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                La banda atraviesa su etapa más oscura. Arthur comienza a
+                cuestionar su vida, la lealtad a Dutch y el futuro de sus amigos.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>Ícaro y amigos</h3><p>Arthur participa en un plan que requiere observar la situación desde el aire.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>Visitas de cortesía</h3><p>Arthur se enfrenta a nuevos problemas relacionados con los Pinkerton.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>Una furia desatada</h3><p>Los acontecimientos ponen a prueba las relaciones dentro de la banda.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>Arqueología para principiantes</h3><p>Arthur ayuda a un aliado a recuperar objetos importantes.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>El puente hacia ninguna parte</h3><p>Arthur y John llevan a cabo una peligrosa operación.</p></div></div>
+            <div class="mision"><span class="mision-numero">6</span><div><h3>Adiós, querido amigo</h3><p>La banda se enfrenta a las consecuencias de sus conflictos.</p></div></div>
+            <div class="mision"><span class="mision-numero">7</span><div><h3>La ira desatada</h3><p>Arthur participa en un enfrentamiento que afecta a sus aliados.</p></div></div>
+            <div class="mision"><span class="mision-numero">8</span><div><h3>El hijo del rey</h3><p>Arthur busca ayudar a un compañero en una situación peligrosa.</p></div></div>
+            <div class="mision"><span class="mision-numero">9</span><div><h3>La despedida de un amigo</h3><p>Las decisiones de Arthur se vuelven cada vez más importantes.</p></div></div>
+            <div class="mision"><span class="mision-numero">10</span><div><h3>El curso del amor verdadero, parte final</h3><p>Arthur resuelve asuntos pendientes con personajes de su pasado.</p></div></div>
+            <div class="mision"><span class="mision-numero">11</span><div><h3>Red Dead Redemption</h3><p>La historia de Arthur llega a su desenlace y sus decisiones cobran sentido.</p></div></div>
+        </section>
+
+        <section class="grupo" id="epilogo1">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">E1</span>
+                <h2>Epílogo, parte 1: Pronghorn Ranch</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                Años después, John intenta dejar atrás su pasado y construir
+                una vida honesta trabajando para mantener a su familia.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>La rueda</h3><p>John empieza una nueva etapa de su vida lejos de la banda.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>Un simple formalismo</h3><p>John intenta acostumbrarse al trabajo y a sus nuevas responsabilidades.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>La caja de herramientas</h3><p>John participa en tareas del rancho y conoce a nuevos compañeros.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>El trabajo honesto</h3><p>John intenta demostrar que puede ganarse la vida legalmente.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>El regreso de un viejo amigo</h3><p>Un encuentro inesperado altera la tranquilidad de John.</p></div></div>
+        </section>
+
+        <section class="grupo" id="epilogo2">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo">E2</span>
+                <h2>Epílogo, parte 2: Beecher's Hope</h2>
+            </div>
+
+            <p class="capitulo-descripcion">
+                John se esfuerza por conseguir un hogar propio, proteger a
+                su familia y cerrar las cuentas que dejó pendientes el pasado.
+            </p>
+
+            <div class="mision"><span class="mision-numero">1</span><div><h3>Un nuevo Jerusalén</h3><p>John trabaja para construir una vivienda para su familia.</p></div></div>
+            <div class="mision"><span class="mision-numero">2</span><div><h3>Una vida de trabajo</h3><p>John continúa con sus planes para establecerse definitivamente.</p></div></div>
+            <div class="mision"><span class="mision-numero">3</span><div><h3>Una visita a Blackwater</h3><p>John busca información y recursos para su siguiente paso.</p></div></div>
+            <div class="mision"><span class="mision-numero">4</span><div><h3>La recompensa de la amistad</h3><p>Viejos aliados ayudan a John a cumplir sus objetivos.</p></div></div>
+            <div class="mision"><span class="mision-numero">5</span><div><h3>Un hombre de honor</h3><p>John afronta las consecuencias de sus decisiones pasadas.</p></div></div>
+            <div class="mision"><span class="mision-numero">6</span><div><h3>American Venom</h3><p>John y sus aliados emprenden una última misión para resolver un conflicto pendiente.</p></div></div>
+        </section>
+
+        <section class="grupo" id="secundarias">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo"><i class="fa-solid fa-star"></i></span>
+                <h2>Misiones secundarias</h2>
+            </div>
+
+            <p class="descripcion">
+                Estas actividades opcionales amplían el mundo, permiten
+                conocer nuevos personajes y descubrir historias independientes.
+                Algunas aparecen en varios lugares o se desarrollan en distintas partes.
+            </p>
+
+            <h3 class="subtitulo">Extraños y misiones de personajes</h3>
+
+            <ul class="lista-simple">
+                <li>El más noble de los hombres y una mujer</li>
+                <li>Un mundo mejor, un nuevo amigo</li>
+                <li>Los lazos que nos unen</li>
+                <li>Un pescador de peces</li>
+                <li>La sabiduría de los ancianos</li>
+                <li>El veterano</li>
+                <li>Geología para principiantes</li>
+                <li>Una prueba de fe</li>
+                <li>El humo y otros pasatiempos</li>
+                <li>Un deporte de reyes y mentirosos</li>
+                <li>Idealismo y pragmatismo para principiantes</li>
+                <li>Oh, hermano</li>
+                <li>La paternidad y otros sueños</li>
+                <li>El artista en el campo</li>
+                <li>Duquesas y otros animales</li>
+                <li>Un mundo mejor, un nuevo amigo: encargos de caza</li>
+                <li>Los olores del comercio de la grasa de pintura</li>
+                <li>Arcadia para aficionados</li>
+                <li>El camino del artista</li>
+                <li>La viuda de Willard's Rest</li>
+                <li>La búsqueda de la banda de Charles Châtenay</li>
+                <li>La búsqueda del hombre misterioso</li>
+                <li>Los sueños americanos</li>
+                <li>La búsqueda del tesoro de Jack Hall</li>
+                <li>La búsqueda del tesoro de la banda envenenada</li>
+            </ul>
+
+            <div class="nota">
+                Las misiones de extraños pueden tener varios encuentros,
+                requisitos de capítulo o condiciones especiales. Esta lista
+                reúne líneas de misiones y actividades destacadas, no cada
+                paso individual de todas ellas.
+            </div>
+        </section>
+
+        <section class="grupo" id="caza">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo"><i class="fa-solid fa-paw"></i></span>
+                <h2>Encargos de caza</h2>
+            </div>
+
+            <p class="descripcion">
+                Los encargos de caza requieren encontrar y entregar animales
+                específicos en condiciones determinadas. También puedes
+                cazar animales legendarios y estudiar la fauna.
+            </p>
+
+            <ul class="lista-simple">
+                <li>Encargos de caza de la señora Hobbs</li>
+                <li>Animales legendarios</li>
+                <li>Peces legendarios</li>
+                <li>Solicitudes de objetos y animales para el campamento</li>
+                <li>Desafíos de cazador</li>
+                <li>Estudio de especies y registro del compendio</li>
+            </ul>
+        </section>
+
+        <section class="grupo" id="robos">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo"><i class="fa-solid fa-mask"></i></span>
+                <h2>Robos y atracos</h2>
+            </div>
+
+            <p class="descripcion">
+                Los robos permiten conseguir dinero y objetos, aunque pueden
+                provocar recompensas por tu captura y atraer a las autoridades.
+            </p>
+
+            <ul class="lista-simple">
+                <li>Robos de trenes</li>
+                <li>Robos a diligencias</li>
+                <li>Robos de tiendas</li>
+                <li>Robos de casas</li>
+                <li>Robos de cajas fuertes</li>
+                <li>Asaltos a escondites de bandas</li>
+                <li>Robos organizados con miembros de la banda</li>
+                <li>Asaltos a negocios con actividades clandestinas</li>
+                <li>Robos de caballos y otros bienes</li>
+            </ul>
+        </section>
+
+        <section class="grupo" id="desafios">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo"><i class="fa-solid fa-trophy"></i></span>
+                <h2>Desafíos</h2>
+            </div>
+
+            <p class="descripcion">
+                Los desafíos ponen a prueba tus habilidades y pueden otorgar
+                recompensas, equipo y progreso para completar el juego.
+            </p>
+
+            <ul class="lista-simple">
+                <li>Bandido</li>
+                <li>Explorador</li>
+                <li>Jugador</li>
+                <li>Herbolario</li>
+                <li>Maestro cazador</li>
+                <li>Tirador</li>
+                <li>Superviviente</li>
+                <li>Experto en armas</li>
+                <li>Jinete</li>
+                <li>Experto en armas y supervivencia</li>
+            </ul>
+        </section>
+
+        <section class="grupo" id="coleccionables">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo"><i class="fa-solid fa-scroll"></i></span>
+                <h2>Coleccionables y búsquedas</h2>
+            </div>
+
+            <p class="descripcion">
+                Estas búsquedas te llevan a recorrer el mapa para reunir
+                objetos únicos, resolver pistas y descubrir lugares escondidos.
+            </p>
+
+            <ul class="lista-simple">
+                <li>Cartas de cigarrillos</li>
+                <li>Huesos de dinosaurio</li>
+                <li>Tallas rupestres</li>
+                <li>Plumas y objetos solicitados</li>
+                <li>Soñadores y puntos de interés</li>
+                <li>Tesoros y mapas del tesoro</li>
+                <li>Objetos exóticos</li>
+                <li>Armas únicas</li>
+                <li>Reliquias y objetos raros</li>
+                <li>Animales y peces legendarios</li>
+            </ul>
+        </section>
+
+        <section class="grupo" id="eventos">
+            <div class="grupo-titulo">
+                <span class="numero-capitulo"><i class="fa-solid fa-compass"></i></span>
+                <h2>Encuentros y eventos aleatorios</h2>
+            </div>
+
+            <p class="descripcion">
+                Durante los viajes puedes encontrar personajes que necesitan
+                ayuda, emboscadas, viajeros, situaciones inesperadas y sucesos
+                que dependen de la región y del progreso de la historia.
+            </p>
+
+            <ul class="lista-simple">
+                <li>Ayudar a viajeros heridos</li>
+                <li>Emboscadas de bandas rivales</li>
+                <li>Rescates de personas secuestradas</li>
+                <li>Encuentros con cazadores de recompensas</li>
+                <li>Duelo contra pistoleros</li>
+                <li>Personas que solicitan transporte</li>
+                <li>Encuentros con animales peligrosos</li>
+                <li>Asaltos y robos en caminos</li>
+                <li>Situaciones especiales en pueblos y ciudades</li>
+                <li>Descubrimiento de lugares misteriosos</li>
+            </ul>
+        </section>
+
+        <a class="volver" href="#tipos">
+            <i class="fa-solid fa-arrow-up"></i> VOLVER AL ÍNDICE
+        </a>
+
+    </main>
+</div>
+
+<footer>
+    <a class="logo-pie" href="RDR2guia.html">
+        <span>RDR2</span>
+        <span>GUIA</span>
+    </a>
+
+    <p>VIVE EL OESTE, COMO NUNCA ANTES</p>
+
+    <div class="redes">
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+</footer>
+
+</body>
+</html>
